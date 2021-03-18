@@ -9,15 +9,31 @@
 
 
     <title>Add Map</title>
+    <div></div>
 </head>
 
 <body>
     
     <h3>My Google Maps Demo</h3>
+
+    <div class="row">
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="State Code" id="state" aria-label="State Code">
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="County Code" id="county" aria-label="County Code">
+        </div>
+        <div class="col-3">
+            <input type="text" class="form-control" placeholder="Site Code" id="site" aria-label="Site Code">
+          </div>
+        <div class="col-3">
+          <button type="submit" class="btn btn-primary" onclick ="initMap()">Sign in</button>
+        </div>
+      </div>
+    <br>
+
     <!--The div element for the map -->
     <div id="map"></div>
-
-
 
 
 
