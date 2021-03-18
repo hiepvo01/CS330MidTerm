@@ -11,6 +11,9 @@ async function get_air() {
     let aqtotal = 0;
     let aqctr = 0;
     let olctr = 0;
+    let longitude = numtriv["Data"][0]['longitude'];
+    let latitude = numtriv["Data"][0]['latitude'];
+    console.log(latitude, longitude);
     for (let j of numtriv["Data"]){
         //console.log(j['arithmetic_mean']);
         aqtotal = aqtotal + j['arithmetic_mean'];
