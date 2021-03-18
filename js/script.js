@@ -4,8 +4,12 @@ function getData(url) {
 }
 
 async function getCorr(){
-    let url = "https://aqs.epa.gov/data/api/annualData/bySite?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=20190618&edate=20190618&state=27&county=037&site=0480";
-    
+    let state = document.querySelector("#state");
+    let county = document.querySelector("#county");
+    let site = document.querySelector("#site");
+
+    let url = `https://aqs.epa.gov/data/api/annualData/bySite?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=20190618&edate=20190618&state=${state.value}&county=${county.value}&site=${site.value}`;
+    console.log(url)
     let data = await fetch(url)
             .then(response => response.json())
             .catch(error => console.log(error));
@@ -14,9 +18,12 @@ async function getCorr(){
 
 
 // Initialize and add the map
-function initMap() {
+async function initMap() {
+    
     // The location of Uluru
-    let result = getCorr();
+    // let result = await getCorr("27", "037" "0480");
+    // "27", '137'
+    let result = await getCorr();
     console.log(result)
     const uluru = { lat: result[0], lng: result[1] };
     // The map, centered at Uluru
