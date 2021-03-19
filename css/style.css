@@ -5,3 +5,59 @@
     width: 100%;
     /* The width is the width of the web page */
   }
+
+  body {
+    font-family: 'Roboto';
+    color: #333;
+    background-color: #F9F7EB;
+  }
+
+  .dropdown {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .navbar {
+    margin-top: 0px
+  }
+
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  #title {
+    font-family: 'Merriweather';
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    color: #333;
+  }
+  
+  #legend {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10px 10px;
+    font-size: 12px;
+  }
+  
+  #legend .item {
+    line-height: 12px;
+    padding: 0 10px 0 4px;
+  }
+  
+  #chart-wrapper {
+    height: 1000px;
+  }
+  
+  #footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    color: #aaa;
+    font-size: 12px;
+  }
+  
+  #footer a {
+    color: #aaa;
+  }

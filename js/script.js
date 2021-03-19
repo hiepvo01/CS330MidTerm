@@ -16,7 +16,6 @@ async function getCorr(){
     return [data.Data[0].latitude, data.Data[0].longitude]
 }
 
-
 // Initialize and add the map
 async function initMap() {
     
@@ -24,6 +23,7 @@ async function initMap() {
     // let result = await getCorr("27", "037" "0480");
     // "27", '137'
     let result = await getCorr();
+    console.log("MapsAPI coor")
     console.log(result)
     const uluru = { lat: result[0], lng: result[1] };
     // The map, centered at Uluru

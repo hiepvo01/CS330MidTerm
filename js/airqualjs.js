@@ -41,7 +41,7 @@ async function get_air() {
     }
     let aqmean = aqtotal / aqctr;
     let olfrac = olctr / aqctr;
-    console.log(aqtotal, aqctr, aqmean, olfrac)
+    // console.log(aqtotal, aqctr, aqmean, olfrac)
 }
 
 async function get_census() {
@@ -49,7 +49,9 @@ async function get_census() {
     let site = "0505"; // would get this from dictionary
     let url = `https://api.census.gov/data/2019/acs/acs5?get=NAME,B03001_002E,B02001_003E,B02001_004E,B02001_005E,B03001_003E&for=county:${county}&in=state:27&key=654a975e290481a70449f6c9bf6a9c21fe3ea0ff`;
     let census_data = await fetch(`${url}`).then(response => response.json());
+    console.log('race')
     console.log(census_data[1][1], census_data[1][2], census_data[1][3], census_data[1][4], census_data[1][5])
+    return [census_data[1][1], census_data[1][2], census_data[1][3], census_data[1][4], census_data[1][5]]
     // white, African-American, Native American, Asian, Hispanic
 }
 
