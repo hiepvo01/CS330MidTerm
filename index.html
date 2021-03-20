@@ -21,7 +21,15 @@
     <div id="title">Air pollution & Census data</div>
     <div class = "row">
       <div class="col-3">
-        <select class = "form-select col-3" id = "county_name">county</select>
+        <select class = "form-select col-3" id = "state_name">state</select>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-primary" onclick="getSites()">Get list of sites</button>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="col-3">
+        <select class = "form-select col-3" id = "site_name">Site name</select>
       </div>
       <div class="col-3">
         <button type="button" class="btn btn-primary" onclick="getData()">Get data</button>
