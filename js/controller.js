@@ -81,7 +81,7 @@ async function getData() {
     let cdn = cd.split(",");
     let county = cdn[1];
     let site = cdn[2]
-    // console.log(state, county, site)
+    console.log(state, county, site)
     let GPS_list = await getGPS(state, county, site);
     // console.log("GPS", GPS_list);
     let air_stats = await get_air(state, county, site);
@@ -89,6 +89,7 @@ async function getData() {
     let census_stats = await get_census(state, county);
     // console.log("Census", census_stats);
     draw(census_stats)
+    lineChart(air_stats)
     return GPS_list;
 }
 
@@ -110,22 +111,11 @@ async function get_air(state, county, site) {
     let url = `https://aqs.epa.gov/data/api/dailyData/bySite?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=20190101&edate=20191231&state=${state}&county=${county}&site=${site}`;
     // console.log("AQ url", url);
     let airdata = await fetch(`${url}`).then(response => response.json());
-    let dlen = airdata["Data"].length;
-    
-    let aqtotal = 0;
-    let aqctr = 0;
-    let olctr = 0;
-    for (let j of airdata["Data"]){
-        aqtotal = aqtotal + j['arithmetic_mean'];
-        if (j['arithmetic_mean']>35){
-            olctr += 1;
-        }
-        aqctr += 1;
-    }
-    let aqmean = aqtotal / aqctr;
-    let olfrac = olctr / aqctr;
-    // console.log("get_air", aqmean, olfrac);
-    return [aqmean, olfrac];
+    // let aqmean = aqtotal / aqctr;
+    // let olfrac = olctr / aqctr;
+    // // console.log("get_air", aqmean, olfrac);
+    // return [aqmean, olfrac];
+    return airdata;
 }
 
 // Get race
@@ -138,6 +128,4 @@ async function get_census(state, county) {
 }
 
 
-window.onload = function() {
-    populateSelectOption("#state_name", allStates); 
-}
+populateSelectOption("#state_name", allStates); 

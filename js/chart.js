@@ -108,6 +108,62 @@ function changeTitle(title){
   origin.innerHTML = `Number of Students per ${title} per Year`;
 }
 
+async function lineChart(airdata){
+
+  var expensesByYear = d3.nest()
+    .key(function(d) {
+        let l =  d.date_local.split("-")[1];
+        if (l[0] == "0") {
+            return l[1]
+        } else {
+            return l
+        }
+    })
+    .rollup(function(v) { return d3.mean(v, function(d) { return d.arithmetic_mean; }).toFixed(2); })
+    .object(airdata.Data);
+
+    var labels = Object.keys(expensesByYear)
+    var data = Object.values(expensesByYear)
+
+    var ctx = chart2.getContext('2d');
+    var config = {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+              label: 'PM 2.5',
+              data: data,
+              backgroundColor: 'rgba(0, 119, 204, 0.3)'
+          }]
+        },options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 20
+                    }
+                }]
+            }
+        }
+
+    };
+    
+    var chart = new Chart(ctx, config);
+    
+    let aqtotal = 0;
+    let aqctr = 0;
+    let olctr = 0;
+
+    for (let j of airdata["Data"]){
+        aqtotal = aqtotal + j['arithmetic_mean'];
+        if (j['arithmetic_mean']>35){
+            olctr += 1;
+        }
+        aqctr += 1;
+    }
+
+}
+
 async function testChartPie(census, chartid) {
   
     races = ["White", "African-American", "Native American", "Asian", "Hispanic"]
