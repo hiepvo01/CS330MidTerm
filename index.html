@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>CS339 Midterm</title>
+    <title>CS330 Midterm</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -32,24 +32,9 @@
         <select class = "form-select col-3" id = "site_name">Site name</select>
       </div>
       <div class="col-3">
-        <button type="button" class="btn btn-primary" onclick="getData()">Get data</button>
+        <button type="button" class="btn btn-primary" onclick="getData();initMap()">Get data</button>
       </div>
     </div>
-
-    <div class="row">
-        <div class="col-3">
-          <input type="text" class="form-control" placeholder="State Code" id="state" aria-label="State Code">
-        </div>
-        <div class="col-3">
-          <input type="text" class="form-control" placeholder="County Code" id="county" aria-label="County Code">
-        </div>
-        <div class="col-3">
-            <input type="text" class="form-control" placeholder="Site Code" id="site" aria-label="Site Code">
-          </div>
-        <div class="col-3">
-          <button type="submit" class="btn btn-primary" onclick ="initMap()">Sign in</button>
-        </div>
-      </div>
 
       <div class="chart">
         <div class="container-fluid">
@@ -83,8 +68,8 @@
         crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" src="js/airqualjs.js"></script> -->
     <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/controller.js"></script> -->
     <!-- <script type="text/javascript" src="js/model.js"></script>
     <script type="text/javascript" src="js/view.js"></script>
     

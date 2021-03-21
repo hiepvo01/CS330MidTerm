@@ -108,9 +108,8 @@ function changeTitle(title){
   origin.innerHTML = `Number of Students per ${title} per Year`;
 }
 
-async function testChartPie(chartid) {
+async function testChartPie(census, chartid) {
   
-    census = await get_census();
     races = ["White", "African-American", "Native American", "Asian", "Hispanic"]
     terms_data = []
     terms_labels = []
@@ -255,26 +254,8 @@ function testChartBar(students, year, attr, chartid) {
         })
     }
 
-function draw(){
+function draw(census){
   resetCanvas();
   d3.select('canvas').selectAll('*').remove();
-  testChartPie('chart1');
-
-//   d3.csv('../backend/graphData/CGL_DataFinal_Mar2021.csv').then(function(result) {
-//       testChartPie(result, "2015-16", attr, 'chart1');
-//       testChartPie(result, "2016-17", attr, 'chart3');
-//       testChartPie(result, "2017-18", attr, 'chart5');
-//       testChartPie(result, "2018-19", attr, 'chart7');
-//       changeTitle(attr)
-//   });
-  
-//   d3.csv('../backend/graphData/CGL_DataFinal_Mar2021.csv').then(function(result) {
-//       testChartBar(result, "2015-16", attr, 'chart2');
-//       testChartBar(result, "2016-17", attr, 'chart4');
-//       testChartBar(result, "2017-18", attr, 'chart6');
-//       testChartBar(result, "2018-19", attr, 'chart8');
-//   });
+  testChartPie(census, 'chart1');
 }
-
-resetCanvas();
-testChartPie('chart1');
