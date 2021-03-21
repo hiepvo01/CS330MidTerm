@@ -6,6 +6,14 @@
     /* The width is the width of the web page */
   }
 
+  #getData {
+    margin:0;
+    position:relative;
+    top:5%; 
+    left:43%;
+    
+  }
+
   body {
     font-family: 'Roboto';
     color: #333;

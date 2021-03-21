@@ -20,20 +20,21 @@
     
     <div id="title">Air pollution & Census data</div>
     <div class = "row">
+      <div class="col-3"></div>
       <div class="col-3">
-        <select class = "form-select col-3" id = "state_name">state</select>
+        <select class = "form-select col-3" id = "state_name" onclick="getSites()">state</select>
       </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-primary" onclick="getSites()">Get list of sites</button>
-      </div>
-    </div>
-    <div class = "row">
       <div class="col-3">
         <select class = "form-select col-3" id = "site_name">Site name</select>
       </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-primary" onclick="getData();initMap()">Get data</button>
+      <div class="col-3"></div>
+    </div>
+    <div class = "row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <button type="button" class="btn btn-primary" id="getData" onclick="getData();initMap()">Get data</button>
       </div>
+      <div class="col-4"></div>
     </div>
 
       <div class="chart">
