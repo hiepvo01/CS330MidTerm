@@ -6,6 +6,7 @@ const years = []
 for (let year=2015; year < new Date().getFullYear() - 1; year++){
     years.push(year)
 }
+
 let menu = document.querySelector("#year_name");
 menu.innerHTML = "";
 for (let opt of years) {
@@ -15,6 +16,9 @@ for (let opt of years) {
     newOption.innerHTML = opt;
     menu.appendChild(newOption);
 }
+
+
+
 const allStates = {
     "Illinois":17,
     "Iowa":19,
@@ -45,12 +49,16 @@ function populateSelectOption(elementId, optionsArray) {
 function populateSites(allSites) {
     
     let menu = document.querySelector("#site_name");
+    menu.disabled = false;
     menu.innerHTML = "";
     for (let opt in allSites) {
         let newOption = document.createElement("option");
         newOption.setAttribute("value", allSites[opt]);
+        let site_str = allSites[opt];
+        //console.log(site_str[0]);
+        //let site_str_split = site_str.split(",");
         //console.log(allSites[opt])
-        newOption.innerHTML = allSites[opt];
+        newOption.innerHTML = site_str[0];
         menu.appendChild(newOption);
     }
 }

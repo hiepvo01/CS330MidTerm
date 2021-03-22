@@ -22,15 +22,18 @@
     
     <div id="title">Air pollution & Census data</div>
     <div class = "row">
-      <div class="col-3"></div>
+      <div class="col-2"></div>
       <div class="col-2">
-        <select class = "form-select col-2" id = "state_name" onclick="getSites()">State</select>
+        <label for "state_name">Select state</label>
+        <select class = "form-select col-2" id = "state_name"  onclick="getSites()">State</select>
       </div>
       <div class="col-2">
+        <label for "year_name">Select year</label>
         <select class = "form-select col-2" id = "year_name" onclick="getSites()">Year</select>
       </div>
-      <div class="col-2">
-        <select class = "form-select col-2" id = "site_name">Site name</select>
+      <div class="col-4">
+        <label for "site_name">Site (county - city: monitor).  Select state & year first</label>
+        <select class = "form-select col-4" id = "site_name" disabled>Site name</select>
       </div>
       <div class="col-3"></div>
     </div>
