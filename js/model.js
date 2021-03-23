@@ -4,11 +4,12 @@
 'use strict';
 
 class site {
-    constructor(site_ID, name_str, cCode, sCode) {
+    constructor(site_ID, name_str, cCode, sCode, selected) {
         this._site_ID = site_ID;
         this._name_str= name_str;
         this._cCode= cCode;
         this._sCode = sCode;
+        this._selected = selected;
     }
 
     get site_ID() {
@@ -25,6 +26,13 @@ class site {
 
     get sCode() {
         return this._sCode;
+    }
+
+    set selected(a) {
+        this._selected = a;
+    }
+    get selected() {
+        return this._selected;
     }
 }
 
@@ -63,11 +71,7 @@ class siteList extends Subject {
 
     clearList() {
         localStorage.removeItem("local_slist");
-        //this.allInvaders = this.allInvaders.filter(anInvader => anInvader.removed & !anInvader.removed)
-        
-        // This worked!  But it is silly.  Must be a better way.
         this.allSites = []
-        // This is the better way!
         this.loadList();
         this.publish("The list is empty", this);
     }
@@ -75,15 +79,13 @@ class siteList extends Subject {
     loadList(){   //no, this should be done by view.
         let slist = localStorage.getItem("local_slist");
         slist = slist ? JSON.parse(slist) : [];
-        //console.log("ilist:", ilist.length);  
-        let fnames = ["_species", "_location", "_worker", "_date", "_removed"];
         for (let asite of slist){
-            //console.log("inv item: ", inv);
             let site_ID = asite["_site_ID"];
             let name_str = asite["_name_str"];
             let cCode = asite["_cCode"];
             let sCode = asite["_sCode"];
-            let newSite = new site(site_ID, name_str, cCode, sCode);    
+            let selected = asite["_selected"];
+            let newSite = new site(site_ID, name_str, cCode, sCode, selected);    
             mySiteListModel.add(newSite);
         }
     }
@@ -92,14 +94,24 @@ class siteList extends Subject {
         localStorage.removeItem("local_slist");
         let slist = [];
         for (let i_s of this){
-            //console.log(this);
             slist.push(i_s);
         }
         localStorage.setItem("local_slist", JSON.stringify(slist));
         this.publish("The list is saved", this);
     }
 
-    
+    changeSelected(siteID){
+        console.log("Hee", siteID);
+        for (let asite of this){
+            if (asite.site_ID === siteID){
+                console.log("Hey!", asite.site_ID);
+                asite.selected = 1;
+            } else{
+                console.log("Ho", asite.site_ID);
+                asite.selected = 0;
+            }
+        }
+    }
 
     toString() {
         return `${this.allSites}`;
