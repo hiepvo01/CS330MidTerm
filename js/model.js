@@ -104,10 +104,8 @@ class siteList extends Subject {
         console.log("Hee", siteID);
         for (let asite of this){
             if (asite.site_ID === siteID){
-                console.log("Hey!", asite.site_ID);
                 asite.selected = 1;
             } else{
-                console.log("Ho", asite.site_ID);
                 asite.selected = 0;
             }
         }

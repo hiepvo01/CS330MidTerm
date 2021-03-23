@@ -133,17 +133,30 @@ async function lineChart(airdata){
           datasets: [{
               label: 'PM 2.5',
               data: data,
-              backgroundColor: 'rgba(0, 119, 204, 0.3)'
+              fill: false,
+              borderColor: 'rgba(0, 119, 204, 0.3)',
+              backgroundColor: '#000099',
+              anchor:'end'
           }]
         },options: {
             scales: {
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Month'
+                }
+              }],
                 yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'PM 2.5 monthly average'
+                  },
                     ticks: {
                         autoSkip: true,
                         maxTicksLimit: 20
                     }
                 }]
-            }
+            },
         }
 
     };

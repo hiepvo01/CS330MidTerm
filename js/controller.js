@@ -107,7 +107,7 @@ async function getData() {
     saveData(siteList, state, county, site_name, site, year, GPS_list, air_stats, census_stats);  // saves everything
     draw(census_stats)
     lineChart(air_stats)
-    return GPS_list;
+    initMap(GPS_list);
 }
 
 //Saves all data.  Not sure if air stats correctly reconstituted 
@@ -223,4 +223,8 @@ if (plist.length > 0){
     let census_stats = plist[6];
     let air_stats = plist[7];
     setStateYearSite(state, year, sitename);  // sets options on dropdown
+    console.log(GPS_list)
+    draw(census_stats)
+    lineChart(air_stats)
+    initMap(GPS_list);
 }
