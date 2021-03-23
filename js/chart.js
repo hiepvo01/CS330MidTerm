@@ -149,7 +149,7 @@ async function lineChart(airdata){
                 yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'PM 2.5 monthly average'
+                    labelString: 'PM 2.5 monthly average (ug/m3)'
                   },
                     ticks: {
                         autoSkip: true,
@@ -203,8 +203,13 @@ async function testChartPie(census, chartid) {
       terms_colors.push(myColor(val[0]))
     }
     var chart = new Chart(chartid, {
-        type: 'doughnut',
+        type: 'pie',
         options: {
+        title: {
+            display: true,
+            position: 'bottom',
+            text: 'Chart.js Doughnut Chart'
+        },
         elements: {
             center: {
                 text: "Test Race",
