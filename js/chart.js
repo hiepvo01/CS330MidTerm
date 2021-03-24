@@ -96,11 +96,21 @@ function resetCanvas(){
     <div class="row">
         <div class="col-6">
         <canvas id="chart${i}"></canvas>
+        <div class="chartTitle"><a href="https://www.census.gov/programs-surveys/acs" target="_blank">U.S Census Race data</a></div>
         </div>
         <div class="col-6">
         <canvas id="chart${i+1}"></canvas>
+        <div class="chartTitle"><a href="https://www.epa.gov/air-trends/particulate-matter-pm25-trends" target="_blank">PM 2.5 polution data</a></div>
         </div>
     </div>`)
+
+    $('.imageMap').remove();
+    $('body').append(`<div class="imageMap">
+    <div class = "row">
+      <div class="col-6"><img src="images/pm2.5_scale_graphic-color_2.jpg" alt="PM 2.5 graph"></div>
+      <div class="col-6"><div id="map"></div></div>
+    </div>
+  </div>`)
 }
 
 function changeTitle(title){
@@ -206,20 +216,20 @@ async function testChartPie(census, chartid) {
         type: 'pie',
         options: {
         title: {
-            display: true,
+            display: false,
             position: 'bottom',
             text: 'Chart.js Doughnut Chart'
         },
-        elements: {
-            center: {
-                text: "Test Race",
-                color: '#FF6384', // Default is #000000
-                fontStyle: 'Arial', // Default is Arial
-                sidePadding: 20, // Default is 20 (as a percentage)
-                minFontSize: 25, // Default is 20 (in px), set to false and text will not wrap.
-                lineHeight: 25 // Default is 25 (in px), used for when text wraps
-            }
-        },
+        // elements: {
+        //     center: {
+        //         text: "Test Race",
+        //         color: '#FF6384', // Default is #000000
+        //         fontStyle: 'Arial', // Default is Arial
+        //         sidePadding: 20, // Default is 20 (as a percentage)
+        //         minFontSize: 25, // Default is 20 (in px), set to false and text will not wrap.
+        //         lineHeight: 25 // Default is 25 (in px), used for when text wraps
+        //     }
+        // },
           maintainAspectRatio: true,
           responsive: true,
           legend: {
@@ -318,6 +328,7 @@ function testChartBar(students, year, attr, chartid) {
         },
         data: {
             labels: terms_labels,
+            padding: 5,
             datasets: [
             {
                 data: terms_data,
