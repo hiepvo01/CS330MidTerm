@@ -96,11 +96,11 @@ function resetCanvas(){
     <div class="row">
         <div class="col-6">
         <canvas id="chart${i}"></canvas>
-        <div class="chartTitle"><a href="https://www.census.gov/programs-surveys/acs" target="_blank">U.S Census Race data</a></div>
+        <div class="chartTitle"><a href="https://www.census.gov/programs-surveys/acs" target="_blank">US Census race and ethnicity data</a></div>
         </div>
         <div class="col-6">
         <canvas id="chart${i+1}"></canvas>
-        <div class="chartTitle"><a href="https://www.epa.gov/air-trends/particulate-matter-pm25-trends" target="_blank">PM 2.5 polution data</a></div>
+        <div class="chartTitle"><a href="https://www.epa.gov/air-trends/particulate-matter-pm25-trends" target="_blank">PM 2.5 pollution data  from US Environmental Protection Agency</a></div>
         </div>
     </div>`)
 

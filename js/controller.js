@@ -45,8 +45,8 @@ async function populateSelectOption(elementId, optionsArray) {
     let menu = document.querySelector(elementId);
     for (let opt in optionsArray) {
         let newOption = document.createElement("option");
-        // newOption.setAttribute("value", optionsArray[opt]);
-        newOption.setAttribute("value", opt);
+        newOption.setAttribute("value", optionsArray[opt]);
+        // newOption.setAttribute("value", opt);
         newOption.innerHTML = opt;
         menu.appendChild(newOption);
     }
@@ -54,11 +54,11 @@ async function populateSelectOption(elementId, optionsArray) {
 
 
 async function getSites(){
-    let state = document.getElementsByName("States")[0].value;
-    let sc = allStates[state]
-    // let sc = document.querySelector("#state_name").selectedOptions[0].value;
+    // let state = document.getElementsByName("States")[0].value;
+    // let sc = allStates[state]
+    let sc = document.querySelector("#state_name").selectedOptions[0].value;
     let year = document.querySelector("#year_name").selectedOptions[0].value;
-    changeTitle(state, year);
+    changeTitle(document.querySelector("#state_name").selectedOptions[0].innerHTML, year);
     let url = `https://aqs.epa.gov/data/api/monitors/byState?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=${year}0608&edate=${year}0608&state=${sc}`
 
     let sitedata = await fetch(url)
@@ -88,9 +88,9 @@ async function getSites(){
 }
 
 async function getData() {
-    let sc = document.getElementsByName("States")[0].value;
-    let state = allStates[sc]
-    // let state = document.querySelector("#state_name").selectedOptions[0].value;
+    // let sc = document.getElementsByName("States")[0].value;
+    // let state = allStates[sc]
+    let state = document.querySelector("#state_name").selectedOptions[0].value;
     // console.log(state)
     let element = document.querySelector("#site_name");
     let cd = "";
