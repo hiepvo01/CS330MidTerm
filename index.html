@@ -26,7 +26,11 @@
       <div class="col-2"></div>
       <div class="col-2">
         <label for "state_name">Select state</label>
-        <select class = "form-select col-2" id = "state_name"  onclick="getSites()">State</select>
+        <input class = "form-select col-2" name="States" type="text" list="state_name" />
+          <datalist id="state_name">
+
+          </datalist>
+        <!-- <select class = "form-select col-2" id = "state_name"  onclick="getSites()">State</select> -->
       </div>
       <div class="col-2">
         <label for "year_name">Select year</label>

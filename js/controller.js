@@ -21,16 +21,6 @@ for (let opt of years) {
     menu.appendChild(newOption);
 }
 
-
-
-const allStates = {
-    "Illinois":17,
-    "Iowa":19,
-    "Minnesota":27,
-    "Nebraska":31,
-    "Wisconsin":55
-};
-
 // Change title
 function changeTitle(title){
     var origin = document.querySelector("#title"); 
@@ -38,12 +28,25 @@ function changeTitle(title){
 }
   
 
+let allStates = {};
+async function getStates(){
+    let states = await fetch("https://api.census.gov/data/2010/dec/sf1?get=NAME&for=state:*")
+    .then(response => response.json())
+    .catch(error => console.log(error));
+    for(let state of states.slice(1, states.length)){
+        allStates[state[0]] = state[1]
+    }
+}
 // Populate states
-function populateSelectOption(elementId, optionsArray) {
+async function populateSelectOption(elementId, optionsArray) {
+
+    await getStates();
+    console.log(allStates)
     let menu = document.querySelector(elementId);
     for (let opt in optionsArray) {
         let newOption = document.createElement("option");
-        newOption.setAttribute("value", optionsArray[opt]);
+        // newOption.setAttribute("value", optionsArray[opt]);
+        newOption.setAttribute("value", opt);
         newOption.innerHTML = opt;
         menu.appendChild(newOption);
     }
@@ -51,13 +54,18 @@ function populateSelectOption(elementId, optionsArray) {
 
 
 async function getSites(){
-    let sc = document.querySelector("#state_name").selectedOptions[0].value;
+    let state = document.getElementsByName("States")[0].value;
+    let sc = allStates[state]
+    // let sc = document.querySelector("#state_name").selectedOptions[0].value;
     let year = document.querySelector("#year_name").selectedOptions[0].value;
     changeTitle(year);
     let url = `https://aqs.epa.gov/data/api/monitors/byState?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=${year}0608&edate=${year}0608&state=${sc}`
+
     let sitedata = await fetch(url)
             .then(response => response.json())
             .catch(error => console.log(error));
+
+    console.log(sitedata)
     let allSites = {};
     mySiteListModel.clearList();
     clearData();
@@ -80,7 +88,10 @@ async function getSites(){
 }
 
 async function getData() {
-    let state = document.querySelector("#state_name").selectedOptions[0].value;
+    let sc = document.getElementsByName("States")[0].value;
+    let state = allStates[sc]
+    // let state = document.querySelector("#state_name").selectedOptions[0].value;
+    // console.log(state)
     let element = document.querySelector("#site_name");
     let cd = "";
     let site_name = "";
@@ -210,6 +221,7 @@ function setStateYearSite(state, year, site){
     st.value = site;
 }
 
+
 populateSelectOption("#state_name", allStates); 
 let plist = loadData();  // reloads from local stroage
 if (plist.length > 0){
@@ -223,7 +235,6 @@ if (plist.length > 0){
     let census_stats = plist[6];
     let air_stats = plist[7];
     setStateYearSite(state, year, sitename);  // sets options on dropdown
-    console.log(GPS_list)
     draw(census_stats)
     lineChart(air_stats)
     initMap(GPS_list);
