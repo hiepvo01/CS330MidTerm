@@ -46,20 +46,6 @@
 
 // init();
 
-// let allStates = {};
-
-// async function getStates(){
-//     let states = await fetch("https://api.census.gov/data/2010/dec/sf1?get=NAME&for=state:*")
-//     .then(response => response.json())
-//     .catch(error => console.log(error));
-//     for(let state of states.slice(1, states.length)){
-//         allStates[state[0]] = Number(state[1])
-//     }
-// }
-
-// getStates();
-// console.log(allStates)
-
 // Initialize and add the map
 async function initMap(result) {
     const uluru = { lat: result[0], lng: result[1] };

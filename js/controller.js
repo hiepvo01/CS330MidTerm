@@ -22,9 +22,9 @@ for (let opt of years) {
 }
 
 // Change title
-function changeTitle(title){
+function changeTitle(state, year){
     var origin = document.querySelector("#title"); 
-    origin.innerHTML = `Air pollution & Census data ${title}`;
+    origin.innerHTML = `Air pollution & Census data in ${state} ${year}`;
 }
   
 
@@ -58,7 +58,7 @@ async function getSites(){
     let sc = allStates[state]
     // let sc = document.querySelector("#state_name").selectedOptions[0].value;
     let year = document.querySelector("#year_name").selectedOptions[0].value;
-    changeTitle(year);
+    changeTitle(state, year);
     let url = `https://aqs.epa.gov/data/api/monitors/byState?email=baacer01@luther.edu&key=ecruhare55&param=88101&bdate=${year}0608&edate=${year}0608&state=${sc}`
 
     let sitedata = await fetch(url)
